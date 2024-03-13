@@ -4,14 +4,18 @@
     {
         static void Main(string[] args)
         {
-
+            //Declarando as Váriaveis
+            //----------------------------------------------
             decimal primeiroNumero = 0;
             decimal segundoNumero = 0;
             decimal resultado = 0;
             string operacao = "";
+            //----------------------------------------------
 
             while (true)
             {
+                //Menu
+                //---------------------------------------------------------------
                 Console.WriteLine("--------------------------------");
                 Console.WriteLine("| " + " Calculadora Tabajara - 2024" + " |");
                 Console.WriteLine("-------------------------------- \n");
@@ -24,6 +28,8 @@
                 Console.WriteLine("| " + "Digite S para Sair" + "        |");
                 Console.WriteLine("-----------------------------");
                 operacao = Console.ReadLine();
+                //---------------------------------------------------------------
+
 
                 if (operacao == "S" || operacao == "s")
                 {
@@ -36,12 +42,14 @@
                 }
 
 
+                //Capturando os valores do usuário
+                //--------------------------------------------------
                 Console.WriteLine("Digite o primeiro número");
                 primeiroNumero = decimal.Parse(Console.ReadLine());
 
-
                 Console.WriteLine("Digite o segundo número");
                 segundoNumero = decimal.Parse(Console.ReadLine());
+                //--------------------------------------------------
 
 
 
