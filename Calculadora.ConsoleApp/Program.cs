@@ -86,9 +86,13 @@
                         Console.WriteLine("Digite um número diferente de 0 para o segundo número");
                         segundoNumero = decimal.Parse(Console.ReadLine());
                     }
+
+
                     resultado = primeiroNumero / segundoNumero;
                 }
                 //----------------------------------------------
+
+                Console.WriteLine("O resultado é: " + resultado);
             }
 
         }
