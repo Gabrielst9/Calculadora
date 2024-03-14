@@ -4,7 +4,7 @@
 Uma calculadora de console simples mas poderosa que permite realizar as quatro operacoes matemáticas.
 
 ## Funcionalidades
-- **Operacoes Básicas**:
+- **Operações Básicas**:
 	- Soma
 	- Subtração
 	- Multiplicação
@@ -13,7 +13,7 @@ Uma calculadora de console simples mas poderosa que permite realizar as quatro o
 - **Suporte a Decimais**:
 	- Trabalhe com números que tem até duas casas decimais.
 	
-- **Trataamento de Divisão por 0**:
+- **Tratamento de Divisão por 0**:
 	- A calculadora é capaz de validar erros de divisão por zero.
 
 ___
