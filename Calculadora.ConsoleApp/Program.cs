@@ -81,18 +81,12 @@
                 //----------------------------------------------
                 else if (operacao == "4")
                 {
-                    if (primeiroNumero == 0 && segundoNumero == 0)
-                    {
-                        Console.WriteLine("\n A divisão do número 0 por 0 é inderteminada \n");
+                    while (segundoNumero == 0)
+                    { 
+                        Console.WriteLine("Digite um número diferente de 0 para o segundo número");
+                        segundoNumero = decimal.Parse(Console.ReadLine());
                     }
-                    else
-                    {
-                        resultado = primeiroNumero / segundoNumero;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Opcao Invalida");
+                    resultado = primeiroNumero / segundoNumero;
                 }
                 //----------------------------------------------
             }
