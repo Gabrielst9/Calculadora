@@ -9,92 +9,119 @@
             decimal primeiroNumero = 0;
             decimal segundoNumero = 0;
             decimal resultado = 0;
-            string operacao = "";
             //----------------------------------------------
 
             while (true)
             {
                 //Menu
                 //---------------------------------------------------------------
-                Console.WriteLine("--------------------------------");
-                Console.WriteLine("| " + " Calculadora Tabajara - 2024" + " |");
-                Console.WriteLine("-------------------------------- \n");
-
-                Console.WriteLine("-----------------------------");
-                Console.WriteLine("| " + "Digite 1 para Adicionar" + "   |");
-                Console.WriteLine("| " + "Digite 2 para Subtrair" + "    |");
-                Console.WriteLine("| " + "Digite 3 para Multiplicar" + " |");
-                Console.WriteLine("| " + "Digite 4 para Dividir" + "     |");
-                Console.WriteLine("| " + "Digite S para Sair" + "        |");
-                Console.WriteLine("-----------------------------");
-                operacao = Console.ReadLine();
+                string operacao = MostrarMenu();
                 //---------------------------------------------------------------
 
-
-                if (operacao == "S" || operacao == "s")
+                if (OpcaoSaidaSelecionada(operacao ))
                 {
                     break;
                 }
-                else if (operacao != "1" && operacao != "2" && operacao != "3" && operacao != "4")
+                else if (OpcaoInvalida(operacao))
                 {
-                    Console.WriteLine("Opção Inválida. Por favor, insira uma opção válida.");
+                    ExibirMensagemErro();
                     continue;
                 }
+                else
+                    RealizarCalculo(operacao);
+            }
+        }
+
+        
+
+        static string MostrarMenu()
+        {
+            Console.WriteLine("--------------------------------");
+            Console.WriteLine("| " + " Calculadora Tabajara - 2024" + " |");
+            Console.WriteLine("-------------------------------- \n");
+
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("| " + "Digite 1 para Adicionar" + "   |");
+            Console.WriteLine("| " + "Digite 2 para Subtrair" + "    |");
+            Console.WriteLine("| " + "Digite 3 para Multiplicar" + " |");
+            Console.WriteLine("| " + "Digite 4 para Dividir" + "     |");
+            Console.WriteLine("| " + "Digite S para Sair" + "        |");
+            Console.WriteLine("-----------------------------");
+            string operacao = Console.ReadLine();
+
+            return operacao;
+        }
+
+        static bool OpcaoSaidaSelecionada(string opcao)
+        {
+            bool opcaoSaidaSelecionada = opcao == "S" || opcao == "s";
+
+            return opcaoSaidaSelecionada;
+        }
+
+        static bool OpcaoInvalida(string opcao)
+        {
+            bool opcaoInvalida = opcao != "1" && opcao != "2" && opcao != "3" && opcao != "4";
+
+            return opcaoInvalida;
+        }
+
+        private static void ExibirMensagemErro()
+        {
+            Console.WriteLine("Opção Inválida. Por favor, insira uma opção válida.");
+        }
+
+        static void RealizarCalculo(string operacao)
+        {
+            double resultado;
+
+            //Capturando os valores do usuário
+            //--------------------------------------------------
+            Console.WriteLine("Digite o primeiro número");
+            double primeiroNumero = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite o segundo número");
+            double segundoNumero = double.Parse(Console.ReadLine());
+            //--------------------------------------------------
 
 
-                //Capturando os valores do usuário
-                //--------------------------------------------------
-                Console.WriteLine("Digite o primeiro número");
-                primeiroNumero = decimal.Parse(Console.ReadLine());
-
-                Console.WriteLine("Digite o segundo número");
-                segundoNumero = decimal.Parse(Console.ReadLine());
-                //--------------------------------------------------
-
-
-
-                //Adição
-                //----------------------------------------------
-                if (operacao == "1")
-                {
+            switch (operacao)
+            {
+                case "1":
                     resultado = primeiroNumero + segundoNumero;
-                }
-                //----------------------------------------------
+                    break;
 
-                //Subtração
-                //----------------------------------------------
-                else if (operacao == "2")
-                {
+                case "2":
                     resultado = primeiroNumero - segundoNumero;
-                }
-                //----------------------------------------------
+                    break;
 
-                //Multiplicação
-                //----------------------------------------------
-                else if (operacao == "3")
-                {
+                case "3":
                     resultado = primeiroNumero * segundoNumero;
-                }
-                //----------------------------------------------
+                    break;
 
-                //Divisão
-                //----------------------------------------------
-                else if (operacao == "4")
-                {
+                case "4":
                     while (segundoNumero == 0)
-                    { 
+                    {
                         Console.WriteLine("Digite um número diferente de 0 para o segundo número");
-                        segundoNumero = decimal.Parse(Console.ReadLine());
+                        segundoNumero = double.Parse(Console.ReadLine());
                     }
 
-
                     resultado = primeiroNumero / segundoNumero;
-                }
-                //----------------------------------------------
+                    break;
 
-                Console.WriteLine("O resultado é: " + resultado);
+                default:
+                    resultado = 0;
+                    break;
             }
 
+            resultado = primeiroNumero / segundoNumero;
+
+            ExibirResultado(resultado);
+        }
+
+        private static void ExibirResultado(double resultado)
+        {
+            Console.WriteLine("O resultado é: " + resultado);
         }
     }
 }
