@@ -4,13 +4,6 @@
     {
         static void Main(string[] args)
         {
-            //Declarando as Váriaveis
-            //----------------------------------------------
-            decimal primeiroNumero = 0;
-            decimal segundoNumero = 0;
-            decimal resultado = 0;
-            //----------------------------------------------
-
             while (true)
             {
                 //Menu
@@ -18,7 +11,7 @@
                 string operacao = MostrarMenu();
                 //---------------------------------------------------------------
 
-                if (OpcaoSaidaSelecionada(operacao ))
+                if (OpcaoSaidaSelecionada(operacao))
                 {
                     break;
                 }
@@ -27,6 +20,24 @@
                     ExibirMensagemErro();
                     continue;
                 }
+                else if (operacao == "5")
+                {
+                    Console.Clear();
+
+
+                    Console.WriteLine("Digite um número inteiro: ");
+                    int numeroDigitado = int.Parse(Console.ReadLine());
+
+
+                    Console.WriteLine($"Tabuada do {numeroDigitado} \n");
+
+                    for (int i = 1; i <= 10; i++ )
+                    {
+
+                        Console.WriteLine($"{numeroDigitado} x {i} = {numeroDigitado * i}");
+                    }
+                }
+
                 else
                     RealizarCalculo(operacao);
             }
@@ -40,13 +51,17 @@
             Console.WriteLine("| " + " Calculadora Tabajara - 2024" + " |");
             Console.WriteLine("-------------------------------- \n");
 
-            Console.WriteLine("-----------------------------");
-            Console.WriteLine("| " + "Digite 1 para Adicionar" + "   |");
-            Console.WriteLine("| " + "Digite 2 para Subtrair" + "    |");
-            Console.WriteLine("| " + "Digite 3 para Multiplicar" + " |");
-            Console.WriteLine("| " + "Digite 4 para Dividir" + "     |");
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("| " + "Digite 1 para Adicionar" + "        |");
+            Console.WriteLine("| " + "Digite 2 para Subtrair" + "         |");
+            Console.WriteLine("| " + "Digite 3 para Multiplicar" + "      |");
+            Console.WriteLine("| " + "Digite 4 para Dividir" + "          |");
+            Console.WriteLine("| " + "Digite 5 para Mostrar a Tabuada" + "|");
+
+
+
             Console.WriteLine("| " + "Digite S para Sair" + "        |");
-            Console.WriteLine("-----------------------------");
+            Console.WriteLine("------------------------------------------");
             string operacao = Console.ReadLine();
 
             return operacao;
@@ -100,23 +115,26 @@
                     break;
 
                 case "4":
-                    while (segundoNumero == 0)
-                    {
-                        Console.WriteLine("Digite um número diferente de 0 para o segundo número");
-                        segundoNumero = double.Parse(Console.ReadLine());
-                    }
-
-                    resultado = primeiroNumero / segundoNumero;
-                    break;
-
-                default:
-                    resultado = 0;
+                    resultado = Dividir(primeiroNumero, segundoNumero);
                     break;
             }
 
             resultado = primeiroNumero / segundoNumero;
 
             ExibirResultado(resultado);
+        }
+
+        private static double Dividir(double primeiroNumero, double segundoNumero)
+        {
+            double resultado;
+            while (segundoNumero == 0)
+            {
+                Console.WriteLine("Digite um número diferente de 0 para o segundo número");
+                segundoNumero = double.Parse(Console.ReadLine());
+            }
+
+            resultado = primeiroNumero / segundoNumero;
+            return resultado;
         }
 
         private static void ExibirResultado(double resultado)
